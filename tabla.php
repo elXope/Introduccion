@@ -10,7 +10,7 @@
     <?php
         echo "<table border=1>";
         $contador=3;
-        $lado=10;
+        $lado=$_GET['lado'];
         for ($n1=1; $n1<=$lado; $n1++){
             echo "<tr>";
             for ($n2=1; $n2<=$lado; $n2++){

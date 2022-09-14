@@ -17,5 +17,19 @@
     <br/>
     <p><?= $parrafo ?></p>
     <p><?= $x % $y ?></p>
+
+    <?php
+        $meteors = array(
+            'Hoba' => 6000000,
+            'Cape York' => 58200000,
+            'Campo del Cielo' => 5000000,
+            'Canyon Diablo' => 3000000,
+        );
+        print_r($meteors);
+        echo "<hr>";
+        foreach($meteors as $meteor){
+            echo $meteor . "<br/>";
+        }
+    ?>
 </body>
 </html>

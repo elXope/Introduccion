@@ -7,15 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola món!</h1>
     <?php
-        echo date("d/m/o");
-        $parrafo = "Esto es una cadena";
-        $x = 3;
-        $y = 2;
+        $primerValor = $_GET['x'];
+        $segundoValor = $_GET['y'];
+        echo "El resultado es " . $primerValor * $segundoValor;
     ?>
-    <br/>
-    <p><?= $parrafo ?></p>
-    <p><?= $x % $y ?></p>
 </body>
 </html>

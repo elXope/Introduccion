@@ -8,5 +8,8 @@
 </head>
 <body>
     <h1>Hola món!</h1>
+    <?php
+        echo date("l");
+    ?>
 </body>
 </html>

@@ -11,8 +11,9 @@
         $arreglo = explode(" ", "Seguro que apruebo esta asignatura");
         $solucion = [];
         for($i = 1; $i < count($arreglo); $i++) {
-            $solucion[$i - 1] = [implode(array_slice($arreglo, 0, $i)), implode(array_slice($arreglo, $i, ))]
+            $solucion[$i - 1] = [implode(" ", array_slice($arreglo, 0, $i)), implode(" ", array_slice($arreglo, $i, array_key_last($solucion)))];
         }
+        print_r($solucion);
     ?>
 </body>
 </html>

@@ -16,8 +16,8 @@ if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     !empty($_POST["nombre"]) ?: $errores[] = "El nombre es requerido";
     !empty($_POST["correo"]) && filter_var($_POST["correo"], FILTER_VALIDATE_EMAIL) !== false ?: $errores[] = "No se ha indicado el email o el formato no es correcto";
     //comprovacions imatge
-    if (!in_array(pathinfo($_FILES["avatar"]["name"])["extension"], $extensionesAvatar)) {
-        $errores[] = "No se ha adjuntado un avatar";
+    if (empty($_FILES["avatar"]["name"]) || !in_array(pathinfo($_FILES["avatar"]["name"])["extension"], $extensionesAvatar)) {
+        $errores[] = "No se ha adjuntado un avatar o el formato no es valido";
     }
         
     if (empty($errores)) {

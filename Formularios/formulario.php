@@ -3,6 +3,7 @@
 function filtrado($datos) {
     return stripslashes(trim($datos));
 }
+
 $extensionesAvatar = ["jpg", "png"];
 $directorioSubida = "./avatares";
 $nombre = "";

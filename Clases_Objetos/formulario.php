@@ -3,26 +3,40 @@
 function filtrado($datos) {
     return stripslashes(trim($datos));
 }
-$errores = [];
+$extensionesAvatar = ["jpg", "png"];
+$directorioSubida = "./avatares";
+$nombre = "";
+$correo = "";
+$estudios = "";
+$pathDefAvatar = "";
+$muestra = false;
+
 if (isset($_POST["submit"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
+    $errores = [];
     !empty($_POST["nombre"]) ?: $errores[] = "El nombre es requerido";
     !empty($_POST["correo"]) && filter_var($_POST["correo"], FILTER_VALIDATE_EMAIL) !== false ?: $errores[] = "No se ha indicado el email o el formato no es correcto";
     //comprovacions imatge
-    if (!empty($_FILES["avatar"]["name"])) {
-        // Seguir ací
-    } else {
+    if (!in_array(pathinfo($_FILES["avatar"]["name"])["extension"], $extensionesAvatar)) {
         $errores[] = "No se ha adjuntado un avatar";
     }
+        
     if (empty($errores)) {
         $nombre = filtrado($_POST["nombre"]);
         $correo = filtrado($_POST["correo"]);
         $estudios = $_POST["estudios"];
-        // avatar
+        $pathDefAvatar = $directorioSubida . "/" . pathinfo($_FILES["avatar"]["name"])["filename"] . "." . pathinfo($_FILES["avatar"]["name"])["extension"];
+        move_uploaded_file($_FILES["avatar"]["tmp_name"], $pathDefAvatar);
+        $muestra = true;
     } else {
         foreach ($errores as $err0r) {
             echo $err0r . "<br/>";
         }
     }
+}
+
+if ($muestra) {
+    echo "<br/>Nombre: $nombre<br/>Correo: $correo<br/>Estudios: $estudios<br/>Imagen:<br/>";
+    echo "<img src=$pathDefAvatar><img/>";
 }
 ?>
 <html lang="en">

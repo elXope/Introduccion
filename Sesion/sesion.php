@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-echo session_id() . "<br/>"; //Se pot posar un id com a argument per a canviar el identificador de sessió
+echo session_id() . "<br/>"; //Se pot posar un id com a argument per a canviar el identificador de sessió, i s'hauria de posar esta instrucció primer
 
 $_SESSION["logged_in_user_id"] = "1";
 $_SESSION["logged_in_user_name"] = "Tutsplus";
